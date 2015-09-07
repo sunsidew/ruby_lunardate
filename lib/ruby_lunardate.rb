@@ -180,6 +180,14 @@ class LunarDate
      self.is_leap_month = is_leap_month
   end
 
+  def to_s
+  	return "%4d%02d%02d" % [self.year,self.month,self.day]
+  end
+
+  def inspect
+    return to_s
+  end
+
   def self.lunardays_for_type(month_type)
     return LUNARDAYS_FOR_MONTHTYPE[month_type]
   end
