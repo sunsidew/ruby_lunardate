@@ -9,5 +9,12 @@ gem install ruby_lunardate
 ```ruby
 require 'ruby_lunardate'
 d = LunarDate.to_lunar(2015,9,8)
-puts d
+puts d # 20150726
+```
+
+or simply use to_lunar method by Date Class
+```ruby
+require 'ruby_lunardate'
+date = Date.new(2015,9,8)
+puts date.to_lunar # 2015-07-26
 ```
