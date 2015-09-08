@@ -167,6 +167,17 @@ LUNARDAYS_FOR_MONTHTYPE = {
   6 => [60, 30, 30]
 }
 
+class Date
+  def to_lunar
+    days = LunarDate.get_dates(self)
+    return LunarDate.from_days(days, self.class)
+  end
+
+  def to_lunar!
+    self.self.to_lunar
+  end
+end
+
 class LunarDate
   attr_accessor :year, :month, :day, :is_leap_month
 
@@ -196,11 +207,15 @@ class LunarDate
     return CALENDAR_YEAR_INFO_MAP[@calendar_symbol]
   end
 
+  def self.get_dates(solar_date)
+  	return (solar_date - @start_date).to_i
+  end
+
   def self.to_lunar(year, month, day, locale = :ko)
     solar_date = Date.new(year, month, day)
-    days = (solar_date - @start_date).to_i
+    days = self.get_dates(solar_date)
     # @calendar_symbol = locale
-    return self.from_days(days)
+    return self.from_days(days, self)
   end
 
   def self.is_in_this_days(days, left_days)
@@ -211,7 +226,7 @@ class LunarDate
     return self.is_in_this_days(days, left_days) == false
   end
 
-  def self.from_days(days)
+  def self.from_days(days, type)
     start_year = 1900
     target_month = 0
     is_leap_month = false
@@ -244,6 +259,9 @@ class LunarDate
       start_year += 1
     end
 
-    return self.new(start_year, target_month + 1, days + 1, is_leap_month)
+    target_date = type.new(start_year, target_month + 1, days + 1)
+    target_date.is_leap_month = is_leap_month if type == self
+
+    return target_date
   end
 end

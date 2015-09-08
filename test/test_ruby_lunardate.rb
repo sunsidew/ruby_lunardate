@@ -76,4 +76,12 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(date.day, 19)
     assert_equal(date.is_leap_month, false)
   end
+
+  def test_to_lunar_from_Date_class_variable_20150908
+  	date = Date.new(2015,9,8)
+  	date = date.to_lunar
+  	assert_equal(date.year, 2015)
+    assert_equal(date.month, 7)
+    assert_equal(date.day, 26)
+  end
 end
