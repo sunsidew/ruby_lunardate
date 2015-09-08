@@ -280,7 +280,7 @@ class LunarDate
 
     days += (day-1)
 
-    if is_leap_month
+    if is_leap_month && year_info[year_diff][month] > 2
       days += self.lunardays_for_type(year_info[year_diff][month])[1]
     end
 
