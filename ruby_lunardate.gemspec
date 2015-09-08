@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.email         = %q{sunsidew.yjw@gmail.com}
   spec.date          = %q{2015-09-08}
 
-  spec.summary       = %q{Korean Lunar Calendar Library}
-  spec.description   = spec.summary
+  spec.summary       = %q{Korean Lunar/Solar Calendar Library}
+  spec.description   = %q{Korean lunar, solar date two-way convert library }
   spec.homepage      = %q{https://github.com/sunsidew/ruby_lunardate}
   spec.licenses      = %w(BSD)
 
