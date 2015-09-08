@@ -172,10 +172,6 @@ class Date
     days = LunarDate.get_dates(self)
     return LunarDate.from_days(days, self.class)
   end
-
-  def to_lunar!
-    self.self.to_lunar
-  end
 end
 
 class LunarDate
