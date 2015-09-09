@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "ruby_lunardate"
-  spec.version       = "0.0.6"
+  spec.version       = "0.0.7"
   spec.default_executable = "ruby_lunardate"
 
   spec.authors       = ["sunsidew"]
