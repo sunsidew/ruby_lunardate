@@ -211,7 +211,7 @@ class LunarDate
   	return (solar_date - @start_date).to_i
   end
 
-  def self.to_lunar(year, month, day)
+  def self.from_solar(year, month, day)
     solar_date = Date.new(year, month, day)
     days = self.get_dates(solar_date)
     return self.lunar_from_days(days, self)

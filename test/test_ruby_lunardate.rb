@@ -2,8 +2,8 @@ require 'minitest/autorun'
 require 'ruby_lunardate'
 
 class TestRubyLunarDate < Minitest::Test
-  def test_to_lunar_19790922_from_solar_19791111
-    date = LunarDate.to_lunar(1979, 11, 11)
+  def test_from_solar_19790922_from_solar_19791111
+    date = LunarDate.from_solar(1979, 11, 11)
     assert_equal(date.year, 1979)
     assert_equal(date.month, 9)
     assert_equal(date.day, 22)
@@ -15,8 +15,8 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(lunar_date.day, 11)
   end
 
-  def test_to_lunar_19000101_from_solar_19000131
-    date = LunarDate.to_lunar(1900, 1, 31)
+  def test_from_solar_19000101_from_solar_19000131
+    date = LunarDate.from_solar(1900, 1, 31)
     assert_equal(date.year, 1900)
     assert_equal(date.month, 1)
     assert_equal(date.day, 1)
@@ -28,8 +28,8 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(lunar_date.day, 31)
   end
 
-  def test_to_lunar_19020101_from_solar_19020208
-    date = LunarDate.to_lunar(1902, 2, 8)
+  def test_from_solar_19020101_from_solar_19020208
+    date = LunarDate.from_solar(1902, 2, 8)
     assert_equal(date.year, 1902)
     assert_equal(date.month, 1)
     assert_equal(date.day, 1)
@@ -41,8 +41,8 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(lunar_date.day, 8)
   end
 
-  def test_to_lunar_19040101_from_solar_19040216
-    date = LunarDate.to_lunar(1904, 2, 16)
+  def test_from_solar_19040101_from_solar_19040216
+    date = LunarDate.from_solar(1904, 2, 16)
     assert_equal(date.year, 1904)
     assert_equal(date.month, 1)
     assert_equal(date.day, 1)
@@ -54,8 +54,8 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(lunar_date.day, 16)
   end
 
-  def test_to_lunar_20140930_from_solar_20141023
-    date = LunarDate.to_lunar(2014, 10, 23)
+  def test_from_solar_20140930_from_solar_20141023
+    date = LunarDate.from_solar(2014, 10, 23)
     assert_equal(date.year, 2014)
     assert_equal(date.month, 9)
     assert_equal(date.day, 30)
@@ -67,8 +67,8 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(lunar_date.day, 23)
   end
 
-  def test_to_lunar_19870621_from_solar_19870815_leap
-    date = LunarDate.to_lunar(1987, 8, 15)
+  def test_from_solar_19870621_from_solar_19870815_leap
+    date = LunarDate.from_solar(1987, 8, 15)
     assert_equal(date.year, 1987)
     assert_equal(date.month, 6)
     assert_equal(date.day, 21)
@@ -81,8 +81,8 @@ class TestRubyLunarDate < Minitest::Test
   end
 
   # 3rd MONTHTYPE test case
-  def test_to_lunar_20171025_from_solar_20171212
-    date = LunarDate.to_lunar(2017, 12, 12)
+  def test_from_solar_20171025_from_solar_20171212
+    date = LunarDate.from_solar(2017, 12, 12)
     assert_equal(date.year, 2017)
     assert_equal(date.month, 10)
     assert_equal(date.day, 25)
@@ -95,8 +95,8 @@ class TestRubyLunarDate < Minitest::Test
   end
 
   # 4th MONTHTYPE test case
-  def test_to_lunar_19870729_from_solar_19870921
-    date = LunarDate.to_lunar(1987, 9, 21)
+  def test_from_solar_19870729_from_solar_19870921
+    date = LunarDate.from_solar(1987, 9, 21)
     assert_equal(date.year, 1987)
     assert_equal(date.month, 7)
     assert_equal(date.day, 29)
@@ -109,8 +109,8 @@ class TestRubyLunarDate < Minitest::Test
   end
 
   # 5th MONTHTYPE test case
-  def test_to_lunar_19551119_from_solar_19560101
-    date = LunarDate.to_lunar(1956, 1, 1)
+  def test_from_solar_19551119_from_solar_19560101
+    date = LunarDate.from_solar(1956, 1, 1)
     assert_equal(date.year, 1955)
     assert_equal(date.month, 11)
     assert_equal(date.day, 19)
