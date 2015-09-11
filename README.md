@@ -1,4 +1,5 @@
 # ruby_lunardate [![Gem Version](https://badge.fury.io/rb/ruby_lunardate.svg)](http://badge.fury.io/rb/ruby_lunardate)
+Korean Lunar/Solar Calendar Library
 
 ## install
 ```shell
