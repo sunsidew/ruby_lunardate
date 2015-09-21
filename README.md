@@ -11,7 +11,7 @@ gem install ruby_lunardate
 require 'ruby_lunardate'
 
 # from solar to lunar
-d = LunarDate.to_lunar(2015,9,8)
+d = LunarDate.from_solar(2015,9,8)
 puts d
 # => 20150726
 
@@ -26,7 +26,7 @@ require 'ruby_lunardate'
 
 # from solar to lunar
 date = Date.new(2015,9,8)
-puts date.to_lunar
+puts date.from_solar
 # => 2015-07-26
 
 # from lunar to solar
