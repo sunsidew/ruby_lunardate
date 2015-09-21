@@ -1,11 +1,10 @@
 Gem::Specification.new do |spec|
   spec.name          = "ruby_lunardate"
-  spec.version       = "0.0.7"
+  spec.version       = "0.1.0"
   spec.default_executable = "ruby_lunardate"
 
   spec.authors       = ["sunsidew"]
   spec.email         = %q{sunsidew.yjw@gmail.com}
-  spec.date          = %q{2015-09-08}
 
   spec.summary       = %q{Korean Lunar/Solar Calendar Library}
   spec.description   = %q{Korean lunar, solar date two-way convert library }
