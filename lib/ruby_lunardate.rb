@@ -168,13 +168,12 @@ LUNARDAYS_FOR_MONTHTYPE = {
 }
 
 class Date
-  def to_lunar
-    days = LunarDate.get_dates(self)
-    return LunarDate.lunar_from_days(days, self.class)
+  def from_solar
+    return LunarDate.from_solar(self.year, self.month, self.day)
   end
 
   def to_solar(is_leap_month = false)
-    return LunarDate.to_solar(self.year, self.month, self.day, is_leap_month, self.class)
+    return LunarDate.to_solar(self.year, self.month, self.day, is_leap_month)
   end
 end
 
@@ -207,14 +206,14 @@ class LunarDate
     return CALENDAR_YEAR_INFO_MAP[@calendar_symbol]
   end
 
-  def self.get_dates(solar_date)
-  	return (solar_date - @start_date).to_i
+  def self.get_days(solar_date)
+    return (solar_date - @start_date).to_i
   end
 
   def self.from_solar(year, month, day)
     solar_date = Date.new(year, month, day)
-    days = self.get_dates(solar_date)
-    return self.lunar_from_days(days, self)
+    days = self.get_days(solar_date)
+    return self.lunar_from_days(days)
   end
 
   def self.is_in_this_days(days, left_days)
@@ -225,7 +224,7 @@ class LunarDate
     return self.is_in_this_days(days, left_days) == false
   end
 
-  def self.lunar_from_days(days, type)
+  def self.lunar_from_days(days)
     start_year = 1900
     target_month = 0
     is_leap_month = false
@@ -257,14 +256,13 @@ class LunarDate
       days -= year_days
       start_year += 1
     end
+    
+    lunar_date = self.new(start_year, target_month + 1, days + 1, is_leap_month)
 
-    target_date = type.new(start_year, target_month + 1, days + 1)
-    target_date.is_leap_month = is_leap_month if type == self
-
-    return target_date
+    return lunar_date
   end
 
-  def self.to_solar(year, month, day, is_leap_month = false, type = self)
+  def self.to_solar(year, month, day, is_leap_month = false)
     days = 0
     year_diff = year-1900
     year_info = self.year_info_map
@@ -286,9 +284,6 @@ class LunarDate
 
     solar_date = @start_date+days
 
-    target_date = type.new(solar_date.year, solar_date.month, solar_date.day)
-    target_date.is_leap_month = is_leap_month if type == self
-
-    return target_date
+    return solar_date
   end
 end
