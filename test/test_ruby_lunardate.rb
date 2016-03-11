@@ -159,4 +159,18 @@ class TestRubyLunarDate < Minitest::Test
     assert_equal(solar_date.day, 8)
     assert_equal(solar_date.class, Date)
   end
+
+  def test_lunar_spring_fesival
+    last_night_date = Date.new(2016, 2, 7).from_solar
+    assert_equal(last_night_date.year, 2015)
+    assert_equal(last_night_date.month, 12)
+    assert_equal(last_night_date.day, 29)
+    assert_equal(last_night_date.class, LunarDate)
+
+    spring_first_date = Date.new(2016, 1, 1).to_solar
+    assert_equal(spring_first_date.year, 2016)
+    assert_equal(spring_first_date.month, 2)
+    assert_equal(spring_first_date.day, 8)
+    assert_equal(spring_first_date.class, Date)
+  end
 end
