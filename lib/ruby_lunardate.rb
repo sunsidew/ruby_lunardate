@@ -5,7 +5,7 @@ class Date
     LunarDate.from_solar(year, month, day)
   end
 
-  def to_solar(is_leap_month = false)
+  def to_solar(is_leap_month = false, calendar_symbol = :ko)
     LunarDate.to_solar(year, month, day, is_leap_month)
   end
 end
@@ -13,16 +13,16 @@ end
 class LunarDate
   attr_accessor :year, :month, :day, :is_leap_month
 
-  def self.from_solar(year, month, day)
+  def self.from_solar(year, month, day, calendar_symbol = :ko)
     solar_date = Date.new(year, month, day)
     days = get_days(solar_date)
-    lunar_from_days(days)
+    lunar_from_days(days, calendar_symbol)
   end
 
-  def self.to_solar(year, month, day, is_leap_month = false)
+  def self.to_solar(year, month, day, is_leap_month = false, calendar_symbol = :ko)
     days = 0
     year_diff = year - 1900
-    year_info = CALENDAR_YEAR_INFO_MAP[@calendar_symbol]
+    year_info = CALENDAR_YEAR_INFO_MAP[calendar_symbol]
 
     year_diff.times do |year_idx|
       days += year_info[year_idx][0]
@@ -220,7 +220,6 @@ class LunarDate
   }.freeze
 
   SOLAR_START_DATE = Date.new(1900, 1, 31).freeze
-  @calendar_symbol = :ko
 
   def initialize(year, month, day, is_leap_month = false)
     self.year = year
@@ -244,12 +243,12 @@ class LunarDate
       (days - left_days) < 0
     end
 
-    def lunar_from_days(days)
+    def lunar_from_days(days, calendar_symbol)
       start_year = 1900
       target_month = 0
       is_leap_month = false
       matched = false
-      year_info = CALENDAR_YEAR_INFO_MAP[@calendar_symbol]
+      year_info = CALENDAR_YEAR_INFO_MAP[calendar_symbol]
 
       MAX_YEAR_NUMBER.times do |year_idx|
         year_days = year_info[year_idx][0]
