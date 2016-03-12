@@ -39,9 +39,7 @@ class LunarDate
       days += lunardays_for_type(year_info[year_diff][month])[1]
     end
 
-    solar_date = @start_date + days
-
-    solar_date
+    solar_date = SOLAR_START_DATE + days
   end
 
   def to_s
@@ -221,7 +219,7 @@ class LunarDate
     6 => [60, 30, 30]
   }.freeze
 
-  @start_date = Date.new(1900, 1, 31)
+  SOLAR_START_DATE = Date.new(1900, 1, 31).freeze
   @calendar_symbol = :ko
 
   def initialize(year, month, day, is_leap_month = false)
@@ -239,7 +237,7 @@ class LunarDate
     end
 
     def get_days(solar_date)
-      (solar_date - @start_date).to_i
+      (solar_date - SOLAR_START_DATE).to_i
     end
 
     def in_this_days?(days, left_days)
