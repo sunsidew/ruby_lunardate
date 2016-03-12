@@ -220,10 +220,6 @@ class LunarDate
     (days - left_days) < 0
   end
 
-  def self.not_in_this_days?(days, left_days)
-    in_this_days?(days, left_days) == false
-  end
-
   def self.lunar_from_days(days)
     start_year = 1900
     target_month = 0
@@ -237,7 +233,7 @@ class LunarDate
         12.times do |month_idx|
           total, normal, _leap = lunardays_for_type(year_info[year_idx][month_idx + 1])
           if in_this_days?(days, total)
-            if not_in_this_days?(days, normal)
+            unless in_this_days?(days, normal)
               days -= normal
               is_leap_month = true
             end
